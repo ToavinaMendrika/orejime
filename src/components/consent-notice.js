@@ -18,6 +18,8 @@ export default class ConsentNotice extends React.Component {
         const purposes = getPurposes(config)
         const purposesText = purposes.map((purpose) => t(['purposes', purpose])).join(", ")
         const title = t(['consentNotice', 'title']);
+        const noticeTitleLink = t(['consentNotice', 'titleLink']);
+        const noticeTitleLinkLabel = t(['consentNotice', 'titleLinkLabel']);
 
         return <div aria-hidden={isModalVisible} className={ns(`Notice${isMandatory ? ' Notice--mandatory' : ''}`)}>
             <div className={ns('Notice-body')}>
@@ -32,7 +34,7 @@ export default class ConsentNotice extends React.Component {
 
                 <div className={ns('Notice-text')}>
                     {title &&
-                        <h1 className={ns('Notice-title')} id="orejime-notice-title">{title}</h1>
+                        <h1 className={ns('Notice-title')} id="orejime-notice-title">{title} {noticeTitleLink && noticeTitleLinkLabel && <a href={noticeTitleLink} >{noticeTitleLinkLabel}</a>}</h1>
                     }
 
                     <p className={ns('Notice-description')}>
